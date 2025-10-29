@@ -1,0 +1,629 @@
+:: StoryTitle
+Blood Lust 
+
+
+:: StoryData
+{
+  "ifid": "2149608A-A9A8-47C1-9251-BB5817B83535",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Menu Screen",
+  "tag-colors": {
+    "Night-one": "red",
+    "night-2": "orange"
+  },
+  "zoom": 0.3
+}
+
+
+:: \ Beefcake night one [Night-one] {"position":"1250,525","size":"100,100"}
+*you approach 'Beefcake'*
+What will you say?
+
+[[Positive->beefcake positive 1]]
+[[Neutral->beefcake neutral 1]]
+[[Negative->beefcake negative 1]]
+
+
+:: \ Beefcake night two [night-2] {"position":"2525,525","size":"100,100"}
+work in progress.
+return to start of game.
+
+[[Menu Screen]] 
+
+
+:: \ Sugar Daddy night one [Night-one] {"position":"1400,525","size":"100,100"}
+*you approach 'Sugar daddy'*
+What will you say?
+
+[[Positive->sugar positive 1]]
+[[Neutral->sugar neutral 1]]
+[[Negative->sugar negative 1]]
+
+
+:: \ Sugar Daddy night two [night-2] {"position":"2675,525","size":"100,100"}
+work in progress.
+return to start of game.
+
+[[Menu Screen]] 
+
+
+:: \ continue beefcake 2 [Night-one] {"position":"1350,1525","size":"100,100"}
+Furry will leave to her room for the night. 
+
+[[Continue->Night one]] 
+
+(set: $ttBeefcake to true)
+(set: $n1bed to $n1bed + 1)
+
+
+
+:: \ continue furry 2 [Night-one] {"position":"1200,1525","size":"100,100"}
+Furry will leave to her room for the night. 
+
+[[Continue->Night one]] 
+
+(set: $ttFurry to true)
+(set: $n1bed to $n1bed + 1)
+
+
+
+:: \ continue killer 2 [Night-one] {"position":"1050,1525","size":"100,100"}
+Killer will leave to their room for the night. 
+
+[[Continue->Night one]] 
+
+(set: $ttKiller to true)
+(set: $n1bed to $n1bed + 1)
+
+
+
+:: \ continue sugar 2 [Night-one] {"position":"1500,1525","size":"100,100"}
+Sugar daddy will leave to his room for the night. 
+
+[[Continue->Night one]] 
+
+(set: $ttSugar to true)
+(set: $n1bed to $n1bed + 1)
+
+
+
+:: \ continue twink 2 [Night-one] {"position":"900,1525","size":"100,100"}
+Twink will leave to his room for the night. 
+
+[[Continue->Night one]] 
+
+(set: $ttTwink to true)
+(set: $n1bed to $n1bed + 1)
+
+
+:: \ kill beefcake [Night-one] {"position":"1625,1025","size":"100,100"}
+Death sequence for Beefcake.
+
+[[go to sleep->sleep1]]
+
+(set: $beefcakeDead to true)
+
+
+
+:: \ kill furry [Night-one] {"position":"1625,900","size":"100,100"}
+Death sequence for furry.
+
+[[go to sleep->sleep1]]
+
+(set: $furryDead to true)
+
+
+
+:: \ kill killer [Night-one] {"position":"1625,775","size":"100,100"}
+Death sequence for killer.
+
+[[go to sleep->sleep1]]
+
+(set: $killerDead to true)
+
+
+
+:: \ kill sugar [Night-one] {"position":"1625,1150","size":"100,100"}
+Death sequence for Sugar Daddy.
+
+[[go to sleep->sleep1]]
+
+(set: $sugarDead to true)
+
+
+
+:: \ kill twink [Night-one] {"position":"1625,650","size":"100,100"}
+Death sequence for twink.
+
+[[go to sleep->sleep1]]
+
+(set: $twinkDead to true)
+
+
+
+:: Furry night one [Night-one] {"position":"1100,525","size":"100,100"}
+*you approach 'Furry'*
+What will you say?
+
+[[Positive->furry positive 1]]
+[[Neutral->furry neutral 1]]
+[[Negative->furry negative 1]]
+
+
+:: Furry night two [night-2] {"position":"2375,525","size":"100,100"}
+work in progress.
+return to start of game.
+
+[[Menu Screen]] 
+
+
+:: Intro {"position":"625,400","size":"100,100"}
+Introduction to the situation; why is the player here, seeing the surroundings, seeing the available characters to speak to.
+Time cycle; at the end of every day a player will be killed, decide who will be the last person you end up with. 
+
+
+[[Continue->Night one]]
+
+
+<!-- Decalration of varaibles -->
+(set: $ttTwink to false)
+(set: $ttKiller to false)
+(set: $ttFurry to false)
+(set: $ttBeefcake to false)
+(set: $ttSugar to false)
+
+(set: $n1bed to 0)
+
+<!-- Romance meters -->
+(set: $twink to 0)
+(set: $killer to 0)
+(set: $furry to 0)
+(set: $beefcake to 0)
+(set: $sugar to 0)
+
+<!-- death -->
+(set: $twinkDead to false)
+(set: $killerDead to false)
+(set: $furryDead to false)
+(set: $beefcakeDead to false)
+(set: $sugarDead to false)
+
+<!-- Death counter -->
+(set: $death to 0)
+
+
+
+
+
+:: Killer night one [Night-one] {"position":"950,525","size":"100,100"}
+*you approach 'Killer'*
+What will you say?
+
+[[Positive->killer positive 1]]
+[[Neutral->killer neutral 1]]
+[[Negative->killer negative 1]]
+
+
+:: Killer night two [night-2] {"position":"2225,525","size":"100,100"}
+work in progress.
+return to start of game.
+
+[[Menu Screen]] 
+
+
+:: Menu Screen {"position":"625,275","size":"100,100"}
+Title card of game:
+Name of Game: Blood Lust 
+Possible Background: The haunted house or the 5 Characters you speak to
+
+[[Start->Intro]]
+(Note there will also be a quit button its just not neccessary in this demo)
+
+
+
+:: Night one [Night-one] {"position":"625,525","size":"100,100"}
+each conversation will have 3 dialogue options that can either add to the romance scale, have 0 effect, or have a negative affect towards romancing them. 
+There will also be a counter to know that each person has been spoken to that night.
+
+"who will you speak to?"
+note: every night you are forced to speak to every person before determining who you will boot off that night.
+
+current people in bed: $n1bed
+
+(if: $ttTwink is false)[ [[Twink->Twink night one]] ]
+(if: $ttKiller is false)[ [[Killer->Killer night one]] ]
+(if: $ttFurry is false)[ [[Furry->Furry night one]] ]
+(if: $ttBeefcake is false)[ [[Beefcake-> Beefcake night one]] ]
+(if: $ttSugar is false)[ [[Sugar Daddy-> Sugar Daddy night one]] ]
+
+(if: $n1bed is 5)[you may now go to bed->[[Sleep->Sleep night 1]] ]\
+(else:)[You are not tired right now.]
+    
+ 
+
+
+:: Sleep night 1 [Night-one] {"position":"1625,525","size":"100,100"}
+Current romance meters for every character: 
+
+Twink: $twink
+Killer: $killer
+Furry: $furry
+Beefcake: $beefcake 
+Sugar Daddy: $sugar
+
+Someone will die tonight.
+
+(if: $twink <= $killer and $twink <= $furry and $twink <= $beefcake and $twink <= $sugar and $death is 0)[
+	(set: $death to $death + 1)
+	[[Continue-> kill twink]] 
+]
+(if: $killer <= $twink and $killer <= $furry and $killer <= $beefcake and $killer <= $sugar and $death is 0)[
+	(set: $death to $death + 1)
+	[[Continue-> kill killer]] 
+]
+(if: $furry <= $twink and $furry <= $killer and $furry <= $beefcake and $furry <= $sugar and $death is 0)[
+	(set: $death to $death + 1)
+	[[Continue-> kill furry]] 
+]
+(if: $beefcake <= $twink and $beefcake <= $killer and $beefcake <= $furry and $beefcake <= $sugar and $death is 0)[
+	(set: $death to $death + 1)
+	[[Continue-> kill beefcake]] 
+]
+(if: $sugar <= $twink and $sugar <= $killer and $sugar <= $furry and $sugar <= $beefcake and $death is 0)[
+	(set: $death to $death + 1)
+	[[Continue-> kill sugar]] 
+]
+
+
+:: Sleep night 2 [night-2] {"position":"2900,525","size":"100,100"}
+
+
+
+:: Twink night one [Night-one] {"position":"800,525","size":"100,100"}
+*you approach 'Twink'*
+What will you say?
+
+[[Positive->twink positive 1]]
+[[Neutral->twink neutral 1]]
+[[Negative->twink negative 1]]
+
+
+:: Twink night two [night-2] {"position":"2075,525","size":"100,100"}
+work in progress.
+return to start of game.
+
+[[Menu Screen]] 
+
+
+:: beefcake negative 1 [Night-one] {"position":"1250,900","size":"100,100"}
+Negative reaction from beefcake
+*Conversation response*
+
+[[Continue->continue beefcake 1]] 
+
+(set: $beefcake to $beefcake - 1)
+
+
+:: beefcake negative 2 [Night-one] {"position":"1350,1400","size":"100,100"}
+Negative reaction from beefcake
+*Conversation response*
+
+[[Continue-> continue beefcake 2]]
+
+(set: $beefcake to $beefcake - 1)
+
+
+:: beefcake neutral 1 [Night-one] {"position":"1250,775","size":"100,100"}
+Neutral reaction from beefcake
+*Conversation response*
+
+[[Continue->continue beefcake 1]] 
+
+
+
+:: beefcake neutral 2 [Night-one] {"position":"1350,1275","size":"100,100"}
+Neutral reaction from beefcake
+*Conversation response*
+
+[[Continue-> continue beefcake 2]]
+
+
+:: beefcake positive 1 [Night-one] {"position":"1250,650","size":"100,100"}
+Positive reaction from beefcake
+*Conversation response*
+
+[[Continue->continue beefcake 1]] 
+
+(set: $beefcake to $beefcake + 1)
+
+
+:: beefcake positive 2 [Night-one] {"position":"1350,1150","size":"100,100"}
+Positive reaction from beefcake
+*Conversation response*
+
+[[Continue-> continue beefcake 2]]
+
+(set: $beefcake to $beefcake + 1)
+
+
+:: continue beefcake 1 [Night-one] {"position":"1250,1025","size":"100,100"}
+conversation response:
+
+[[Positive->beefcake positive 2]]
+[[Neutral->beefcake neutral 2]]
+[[Negative->beefcake negative 2]]
+
+
+:: continue furry 1 [Night-one] {"position":"1100,1025","size":"100,100"}
+conversation response:
+
+[[Positive->furry positive 2]]
+[[Neutral->furry neutral 2]]
+[[Negative->furry negative 2]]
+
+
+:: continue killer 1 [Night-one] {"position":"950,1025","size":"100,100"}
+conversation response:
+
+[[Positive->killer positive 2]]
+[[Neutral->killer neutral 2]]
+[[Negative->killer negative 2]]
+
+
+:: continue sugar 1 [Night-one] {"position":"1400,1025","size":"100,100"}
+conversation response:
+
+[[Positive->sugar positive 2]]
+[[Neutral->sugar neutral 2]]
+[[Negative->sugar negative 2]]
+
+
+:: continue twink 1 [Night-one] {"position":"800,1025","size":"100,100"}
+conversation response:
+
+[[Positive->twink positive 2]]
+[[Neutral->twink neutral 2]]
+[[Negative->twink negative 2]]
+
+
+:: furry negative 1 [Night-one] {"position":"1100,900","size":"100,100"}
+Negative reaction from furry
+*Conversation response*
+
+[[Continue->continue furry 1]] 
+
+(set: $furry to $furry - 1)
+
+
+:: furry negative 2 [Night-one] {"position":"1200,1400","size":"100,100"}
+Negative reaction from furry
+*Conversation response*
+
+[[Continue-> continue furry 2]]
+
+(set: $furry to $furry - 1)
+
+
+:: furry neutral 1 [Night-one] {"position":"1100,775","size":"100,100"}
+Neutral reaction from furry
+*Conversation response*
+
+[[Continue->continue furry 1]] 
+
+
+
+:: furry neutral 2 [Night-one] {"position":"1200,1275","size":"100,100"}
+Neutral reaction from furry
+*Conversation response*
+
+[[Continue-> continue furry 2]]
+
+
+:: furry positive 1 [Night-one] {"position":"1100,650","size":"100,100"}
+Positive reaction from furry
+*Conversation response*
+
+[[Continue->continue furry 1]] 
+
+(set: $furry to $furry + 1)
+
+
+:: furry positive 2 [Night-one] {"position":"1200,1150","size":"100,100"}
+Positive reaction from furry
+*Conversation response*
+
+[[Continue-> continue furry 2]]
+
+(set: $furry to $furry + 1)
+
+
+:: killer negative 1 [Night-one] {"position":"950,900","size":"100,100"}
+Negative reaction from killer
+*Conversation response*
+
+[[Continue->continue killer 1]] 
+
+(set: $killer to $killer - 1)
+
+
+:: killer negative 2 [Night-one] {"position":"1050,1400","size":"100,100"}
+Negative reaction from killer
+*Conversation response*
+
+[[Continue-> continue killer 2]]
+
+(set: $killer to $killer - 1)
+
+
+:: killer neutral 1 [Night-one] {"position":"950,775","size":"100,100"}
+Neutral reaction from killer
+*Conversation response*
+
+[[Continue->continue killer 1]] 
+
+
+
+:: killer neutral 2 [Night-one] {"position":"1050,1275","size":"100,100"}
+Neutral reaction from killer
+*Conversation response*
+
+[[Continue-> continue killer 2]]
+
+
+:: killer positive 1 [Night-one] {"position":"950,650","size":"100,100"}
+Positive reaction from killer
+*Conversation response*
+
+[[Continue->continue killer 1]] 
+
+(set: $killer to $killer + 1)
+
+
+
+:: killer positive 2 [Night-one] {"position":"1050,1150","size":"100,100"}
+Positive reaction from killer
+*Conversation response*
+
+[[Continue-> continue killer 2]]
+
+(set: $killer to $killer + 1)
+
+
+:: night 2 [night-2] {"position":"1900,525","size":"100,100"}
+"who will you speak to?"
+
+current people in bed: $n1bed
+
+(if: $ttTwink is false and $twinkDead is false)[ [[Twink->Twink night two]] ]\
+(else-if: $twinkDead is true)[ Twink is dead.]
+(if: $ttKiller is false and $killerDead is false)[ [[Killer->Killer night two]] ]\
+(else-if: $killerDead is true)[ Killer is dead.]
+(if: $ttFurry is false and $furryDead is false)[ [[Furry->Furry night two]] ]\
+(else-if: $furryDead is true)[ Furry is dead.]
+(if: $ttBeefcake is false and $beefcakeDead is false)[ [[Beefcake-> Beefcake night two]] ]\
+(else-if: $beefcake is true)[ Beefcake is dead.]
+(if: $ttSugar is false and $sugarDead is false)[ [[Sugar Daddy-> Sugar Daddy night two]] ]\
+(else-if: $sugarDead is true)[ Sugar Daddy is dead.]
+
+(if: $n1bed is 5)[you may now go to bed->[[Sleep night 2]] ]\
+(else:)[You are not tired right now.]
+
+
+:: sleep1 {"position":"1750,525","size":"100,100"}
+sleep sequence.
+
+[[Continue->night 2]] 
+
+<!-- Reset Values for night 2 -->
+(set: $ttTwink to false)
+(set: $ttKiller to false)
+(set: $ttFurry to false)
+(set: $ttBeefcake to false)
+(set: $ttSugar to false)
+
+(set: $n1bed to 0)
+
+
+:: sugar negative 1 [Night-one] {"position":"1400,900","size":"100,100"}
+Negative reaction from Sugar daddy
+*Conversation response*
+
+[[Continue->continue sugar 1]] 
+
+(set: $sugar to $sugar - 1)
+
+
+:: sugar negative 2 [Night-one] {"position":"1500,1400","size":"100,100"}
+Negative reaction from Sugar daddy
+*Conversation response*
+
+[[Continue-> continue sugar 2]]
+
+(set: $sugar to $sugar - 1)
+
+
+:: sugar neutral 1 [Night-one] {"position":"1400,775","size":"100,100"}
+Neutral reaction from Sugar daddy
+*Conversation response*
+
+[[Continue->continue sugar 1]] 
+
+
+
+:: sugar neutral 2 [Night-one] {"position":"1500,1275","size":"100,100"}
+Neutral reaction from Sugar daddy
+*Conversation response*
+
+[[Continue-> continue sugar 2]]
+
+
+:: sugar positive 1 [Night-one] {"position":"1400,650","size":"100,100"}
+Positive reaction from Sugar daddy
+*Conversation response*
+
+[[Continue->continue sugar 1]] 
+
+(set: $sugar to $sugar + 1)
+
+
+:: sugar positive 2 [Night-one] {"position":"1500,1150","size":"100,100"}
+Positive reaction from Sugar daddy
+*Conversation response*
+
+[[Continue-> continue sugar 2]]
+
+(set: $sugar to $sugar + 1)
+
+
+:: twink negative 1 [Night-one] {"position":"800,900","size":"100,100"}
+Negative reaction from twink
+*Conversation response*
+
+[[Continue->continue twink 1]] 
+
+(set: $twink to $twink - 1)
+
+
+:: twink negative 2 [Night-one] {"position":"900,1400","size":"100,100"}
+Negative reaction from twink
+*Conversation response*
+
+[[Continue-> continue twink 2]]
+
+(set: $twink to $twink - 1)
+
+
+:: twink neutral 1 [Night-one] {"position":"800,775","size":"100,100"}
+Neutral reaction from twink
+*Conversation response*
+
+[[Continue->continue twink 1]] 
+
+
+
+
+:: twink neutral 2 [Night-one] {"position":"900,1275","size":"100,100"}
+Neutral reaction from twink
+*Conversation response*
+
+[[Continue-> continue twink 2]]
+
+
+:: twink positive 1 [Night-one] {"position":"800,650","size":"100,100"}
+Possitive reaction from twink
+*Conversation response*
+
+[[Continue->continue twink 1]] 
+
+(set: $twink to $twink + 1)
+
+
+
+:: twink positive 2 [Night-one] {"position":"900,1150","size":"100,100"}
+Positive reaction from twink
+*Conversation response*
+
+[[Continue-> continue twink 2]]
+
+(set: $twink to $twink + 1)
